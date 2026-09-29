@@ -5,4 +5,7 @@ extends Node
 @export var peso_coesao: float = 0.6
 
 func calcular(agente) -> Vector2:
-	return Vector2.ZERO
+	var forca = $Separacao.calcular(agente) * peso_separacao
+	forca += $Alinhamento.calcular(agente) * peso_alinhamento
+	forca += $Coesao.calcular(agente) * peso_coesao
+	return forca
